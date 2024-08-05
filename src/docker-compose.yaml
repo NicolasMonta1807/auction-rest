@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  bid-capture-rest:
+    build: ./capture
+    container_name: bid-capture-rest
+    ports:
+      - "5000:5000"
+    networks:
+      - auction-network
+
+  bid-tracking-rest:
+    build: ./tracking
+    container_name: bid-tracking-rest
+    ports:
+      - "5001:5001"
+    networks:
+      - auction-network
+
+  bid-analytics-rest:
+    build: ./analytics
+    container_name: bid-analytics-rest
+    ports:
+      - "5002:5002"
+    networks:
+      - auction-network
+
+  bid-producer-rest:
+    build: ./producer
+    container_name: bid-producer-rest
+    ports:
+      - "8080:8080"
+    networks:
+      - auction-network
+
+networks:
+  auction-network:

@@ -1,0 +1,20 @@
+# Python image
+FROM python:3.12.4
+
+# Working directory
+WORKDIR /app
+
+# Copy source code
+COPY . /app
+
+# Install python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port available
+EXPOSE 5000
+
+# Define app env variable
+ENV FLASK_APP=capture.py
+
+# Run app
+CMD [ "flask", "run", "--host=0.0.0.0", "--port=5000"]
